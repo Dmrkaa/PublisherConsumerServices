@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+
+  mssqlserver:
+        image: "mcr.microsoft.com/mssql/server"
+        ports:
+        - "1433:1433"
+        environment:
+            SA_PASSWORD: "c1e17321Aa"
+            ACCEPT_EULA: "Y"
+            MS_SQLPID: Express
+
+
+  rabbitmq:
+      image: rabbitmq:3-management
+      container_name: rabbitmq
+      ports:
+            - 5672:5672
+            - 15672:15672
+  servicepublisher:
+    image: dmrkaa/projectsrepo-1:servicepublisher
+    build:
+      context: .
+      dockerfile: ServiceOne/Dockerfile
+  serviceconsumer:
+    image: dmrkaa/projectsrepo-1:serviceconsumer
+    build:
+      context: .
+      dockerfile: ServiceConsumer/Dockerfile
+      
