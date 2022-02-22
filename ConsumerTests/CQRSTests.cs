@@ -40,8 +40,8 @@ namespace ConsumerTests
 
             var users = GetQueryableMockDbSet(_usr);
 
-            AddPersonCommand _sut = new AddPersonCommand();
-            AddPersonCommand.AddUserCommandHandler hnd = new AddPersonCommand.AddUserCommandHandler(_datacontextMock.Object);
+            AddUserCommand _sut = new AddUserCommand();
+            AddUserCommand.AddUserCommandHandler hnd = new AddUserCommand.AddUserCommandHandler(_datacontextMock.Object);
 
             _datacontextMock.Setup(c => c.Users).Returns(users);
             int bef = users.Count(x => x == null);
@@ -93,7 +93,7 @@ namespace ConsumerTests
             GetOrganizationByIdQuery.GetOrganizationByIdQueryHandler hnd = new GetOrganizationByIdQuery.GetOrganizationByIdQueryHandler(_datacontextMock.Object);
 
 
-            _sut.OrganizationID = Guid.Parse("B35A3C95-B96E-4BD0-9A54-86F282ED9543");
+            _sut.OrganizationID = 0;
 
             _datacontextMock.Setup(c => c.GetOrganizationsById(_sut.OrganizationID).Result).Returns(mockOrganization.Object.Where(x => x.OrganizationID == _sut.OrganizationID).FirstOrDefault());
             _datacontextMock.Setup(c => c.GetAllUsers().Result).Returns(mockUsers.Object.ToList());
@@ -124,23 +124,23 @@ namespace ConsumerTests
             _orgs.AddRange(
                 new Organization[]
                 {
-                    new Organization { OrganizationID=Guid.Parse("B35A3C95-B96E-4BD0-9A54-86F282ED9543"),
+                    new Organization { OrganizationID=0,
                         Name="Marvel" },
-                    new Organization { OrganizationID=Guid.Parse("1FECB8BF-BF38-41E7-8146-00AD585C2E18"),
+                    new Organization { OrganizationID=1,
                         Name="Universal" },
-                    new Organization { OrganizationID=Guid.Parse("962683A0-B3D5-440E-B139-2F794D78F5D6"),
+                    new Organization { OrganizationID=2,
                         Name="DC" }
                 });
             _usr = new List<User>();
             _usr.AddRange(
                   new User[]
                 {
-                    new User { UserID=Guid.NewGuid(), Name="Tom",
-                        OrganizationID=Guid.Parse("B35A3C95-B96E-4BD0-9A54-86F282ED9543"),
+                    new User { UserID=0, Name="Tom",
+                        OrganizationID=0,
                         LastName="Hohland",
                         Email="abc@gmail.kz",
                         MiddleName="Ivanovich"},
-                    new User { UserID=Guid.NewGuid(), Name="Alice", LastName="Wolf", Email="WolfAlice@outllok.com"}
+                    new User { UserID=1, Name="Alice", LastName="Wolf", Email="WolfAlice@outllok.com"}
                 });
         }
 

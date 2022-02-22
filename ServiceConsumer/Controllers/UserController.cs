@@ -32,9 +32,8 @@ namespace ServiceConsumer.Controllers
         /// </summary>
         /// <param name="userID">ID of the User</param>
         /// <param name="organizationID">ID of the organization</param>
-        [HttpGet("{organizationID}")]
         [HttpPut("{userID}/{organizationID}")]
-        public async Task<IActionResult> UserAndOrganizationConnect(Guid userID, Guid organizationID)
+        public async Task<IActionResult> UserAndOrganizationConnect(int userID, int organizationID)
         {
             var updateCommand = new UpdateUserOrganizationCommand() { OrganizationID = organizationID, UserID = userID };
             return Ok(await Mediator.Send(updateCommand));
@@ -47,7 +46,7 @@ namespace ServiceConsumer.Controllers
         /// </summary>
         /// <param name="id">ID of the needed Organization</param>
         [HttpGet("{organizationID}")]
-        public async Task<IActionResult> GetUsersByOrganizationID(Guid organizationID)
+        public async Task<IActionResult> GetUsersByOrganizationID(int organizationID)
         {
             var users = await Mediator.Send(new GetUsersQuery());
             var organization = await Mediator.Send(new GetOrganizationByIdQuery() { OrganizationID = organizationID });

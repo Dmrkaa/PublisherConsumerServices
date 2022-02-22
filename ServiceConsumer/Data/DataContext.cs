@@ -22,26 +22,26 @@ namespace ServiceConsumer.Data
             modelBuilder.Entity<Organization>().HasData(
               new Organization[]
               {
-                    new Organization { OrganizationID=Guid.NewGuid(), Name="Marvel" },
-                    new Organization { OrganizationID=Guid.NewGuid(), Name="Universal" }
+                    new Organization { Name="Marvel" },
+                    new Organization { Name="Universal" }
               });
 
             modelBuilder.Entity<User>().HasData(
                 new User[]
                 {
-                    new User { UserID=Guid.NewGuid(), Name="Tom", LastName="Hohland", Email="abc@gmail.kz", MiddleName="Ivanovich"},
-                    new User { UserID=Guid.NewGuid(), Name="Alice", LastName="Wolf", Email="WolfAlice@outllok.com"}
+                    new User {  Name="Tom", LastName="Hohland", Email="abc@gmail.kz", MiddleName="Ivanovich"},
+                    new User {  Name="Alice", LastName="Wolf", Email="WolfAlice@outllok.com"}
                 });
 
 
         }
 
-        public async Task<Organization> GetOrganizationsById(Guid organizationID)
+        public async Task<Organization> GetOrganizationsById(int organizationID)
         {
             return await Organizations.Where(x => x.OrganizationID == organizationID).FirstOrDefaultAsync();
         }
 
-        public async Task<IList<User>> GetUserById(Guid userID)
+        public async Task<IList<User>> GetUserById(int userID)
         {
             return await Users.Where(x => x.UserID == userID).ToListAsync();
         }

@@ -27,7 +27,7 @@ namespace ServiceConsumer.Consumer
         {
             try
             {
-                AddPersonCommand addPersonCommand = CreateCommand(context.Message);
+                AddUserCommand addPersonCommand = CreateCommand(context.Message);
 
                 _logger.LogInformation($"Object recieve. Name: {context.Message.Name}, LastName: {context.Message.LastName}, MiddleName: {context.Message.MiddleName}, Email: {context.Message.Email}");
                 string sendResult = await _mediator.Send(addPersonCommand);
@@ -44,16 +44,14 @@ namespace ServiceConsumer.Consumer
 
         }
 
-        private AddPersonCommand CreateCommand(UserSharedModel message)
+        private AddUserCommand CreateCommand(UserSharedModel message)
         {
-            AddPersonCommand cmd = new AddPersonCommand();
-            cmd.ID = System.Guid.NewGuid();
-            cmd.Name = message.Name;
-            cmd.LastName = message.LastName;
-            cmd.MiddleName = message.MiddleName;
-            cmd.Email = message.Email;
-            return cmd;
+            AddUserCommand command = new AddUserCommand();
+            command.Name = message.Name;
+            command.LastName = message.LastName;
+            command.MiddleName = message.MiddleName;
+            command.Email = message.Email;
+            return command;
         }
-
     }
 }

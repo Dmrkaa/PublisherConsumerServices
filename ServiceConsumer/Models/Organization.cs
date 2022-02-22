@@ -8,8 +8,9 @@ namespace ServiceConsumer.Models
     public class Organization
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
-        public Guid OrganizationID { get; set; }
+        public int OrganizationID { get; set; }
         [Required]
         [StringLength(100)]
         public string Name { get; set; }

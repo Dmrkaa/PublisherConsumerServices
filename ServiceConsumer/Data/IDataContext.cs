@@ -13,8 +13,8 @@ namespace ServiceConsumer.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Organization> Organizations { get; set; }
 
-        public Task<Organization> GetOrganizationsById(Guid organizationID);
-        public Task<IList<User>> GetUserById(Guid userID);
+        public Task<Organization> GetOrganizationsById(int organizationID);
+        public Task<IList<User>> GetUserById(int userID);
         public Task<List<User>> GetAllUsers();
         Task<int> SaveChanges();
 

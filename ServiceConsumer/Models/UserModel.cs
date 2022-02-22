@@ -6,11 +6,18 @@ namespace ServiceConsumer.Models
 {
     public class User
     {
+
+        
+        public int Id { get; set; }
+
         [Required]
         [Key]
-        public Guid UserID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int UserID { get; set; }
+
+
         [ForeignKey("OrganizationInfoKey")]
-        public Guid? OrganizationID { get; set; } //внешний ключ
+        public int? OrganizationID { get; set; } //внешний ключ
 
         [Required]
         [StringLength(50)]

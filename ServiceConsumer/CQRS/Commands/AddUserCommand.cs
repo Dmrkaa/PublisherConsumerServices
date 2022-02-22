@@ -8,30 +8,28 @@ using ServiceConsumer.Data;
 using ServiceConsumer.Models;
 namespace ServiceConsumer.CQRS.Commands
 {
-    public class AddPersonCommand : IRequest<string>
+    public class AddUserCommand : IRequest<string>
     {
-        public Guid ID { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }
         public string Email { get; set; }
 
-        public class AddUserCommandHandler : IRequestHandler<AddPersonCommand, string>
+        public class AddUserCommandHandler : IRequestHandler<AddUserCommand, string>
         {
             private readonly IDataContext _context;
             public AddUserCommandHandler(IDataContext context)
             {
                 _context = context;
             }
-            public async Task<string> Handle(AddPersonCommand command, CancellationToken cancellationToken)
+            public async Task<string> Handle(AddUserCommand command, CancellationToken cancellationToken)
             {
                 return await SaveUser(command);
             }
 
-            private async Task<string> SaveUser(AddPersonCommand command)
+            private async Task<string> SaveUser(AddUserCommand command)
             {
                 var person = new User();
-                person.UserID = command.ID;
                 person.Name = command.Name;
                 person.LastName = command.LastName;
                 person.MiddleName = command.MiddleName;

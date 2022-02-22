@@ -9,7 +9,7 @@ namespace ServiceConsumer.CQRS.Queries
 {
     public class GetOrganizationByIdQuery : IRequest<Organization>
     {
-        public Guid OrganizationID { get; set; }
+        public int OrganizationID { get; set; }
         public class GetOrganizationByIdQueryHandler : IRequestHandler<GetOrganizationByIdQuery, Organization>
         {
             private readonly IDataContext _context;            

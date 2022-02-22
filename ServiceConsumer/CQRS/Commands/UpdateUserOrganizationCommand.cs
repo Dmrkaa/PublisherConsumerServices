@@ -9,8 +9,8 @@ namespace ServiceConsumer.CQRS.Commands
 {
     public class UpdateUserOrganizationCommand : IRequest<int>
     {
-        public Guid UserID { get; set; }
-        public Guid OrganizationID { get; set; }
+        public int UserID { get; set; }
+        public int OrganizationID { get; set; }
 
         public class UpdateUserCommandHandler : IRequestHandler<UpdateUserOrganizationCommand, int>
         {
