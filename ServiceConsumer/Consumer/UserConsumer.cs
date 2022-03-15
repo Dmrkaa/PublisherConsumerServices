@@ -27,10 +27,10 @@ namespace ServiceConsumer.Consumer
         {
             try
             {
-                AddUserCommand addPersonCommand = CreateCommand(context.Message);
+                AddUserCommand addUserCommand = CreateCommand(context.Message);
 
                 _logger.LogInformation($"Object recieve. Name: {context.Message.Name}, LastName: {context.Message.LastName}, MiddleName: {context.Message.MiddleName}, Email: {context.Message.Email}");
-                string sendResult = await _mediator.Send(addPersonCommand);
+                string sendResult = await _mediator.Send(addUserCommand);
                 _logger.LogInformation($"{sendResult}");
             }
             catch (SqlException e)

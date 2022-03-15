@@ -22,18 +22,16 @@ namespace ServiceConsumer.Data
             modelBuilder.Entity<Organization>().HasData(
               new Organization[]
               {
-                    new Organization { Name="Marvel" },
-                    new Organization { Name="Universal" }
+                    new Organization {OrganizationID=1, Name="Marvel" },
+                    new Organization {OrganizationID=2, Name="Universal" }
               });
 
             modelBuilder.Entity<User>().HasData(
                 new User[]
                 {
-                    new User {  Name="Tom", LastName="Hohland", Email="abc@gmail.kz", MiddleName="Ivanovich"},
-                    new User {  Name="Alice", LastName="Wolf", Email="WolfAlice@outllok.com"}
+                    new User { OrganizationID=1, UserID=1,  Name="Tom", LastName="Hohland", Email="abc@gmail.kz", MiddleName="Ivanovich"},
+                    new User { UserID=2, Name="Alice", LastName="Wolf", Email="WolfAlice@outllok.com"}
                 });
-
-
         }
 
         public async Task<Organization> GetOrganizationsById(int organizationID)

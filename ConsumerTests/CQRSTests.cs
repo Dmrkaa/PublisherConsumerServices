@@ -49,7 +49,6 @@ namespace ConsumerTests
             _sut.Name = "xUnit";
             _sut.LastName = "Test";
             _sut.Email = "mm@mm.rr";
-            _sut.ID = Guid.NewGuid();
             var result = await hnd.Handle(_sut, new System.Threading.CancellationToken());
             string expected = "User added: xUnit Test mm@mm.rr";
             Assert.Equal(expected, result);

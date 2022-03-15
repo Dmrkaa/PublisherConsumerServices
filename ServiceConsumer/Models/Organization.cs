@@ -10,7 +10,7 @@ namespace ServiceConsumer.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
-        public int OrganizationID { get; set; }
+        public uint OrganizationID { get; set; }
         [Required]
         [StringLength(100)]
         public string Name { get; set; }

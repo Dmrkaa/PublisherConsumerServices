@@ -69,7 +69,7 @@ namespace ConsumerTests
 
             bool areEqual = serialized2.ToString() == serialized3.ToString();
             Assert.True(areEqual);
-            var result = controller.UserAndOrganizationConnect(Guid.NewGuid(), Guid.NewGuid());
+            var result = controller.UserAndOrganizationConnect(0, 1);
         }
 
 
@@ -79,22 +79,22 @@ namespace ConsumerTests
             _usr.AddRange(
                   new User[]
                 {
-                    new User { UserID=Guid.NewGuid(), Name="Tom",
-                        OrganizationID=Guid.Parse("B35A3C95-B96E-4BD0-9A54-86F282ED9543"),
+                    new User { UserID=1, Name="Tom",
+                        OrganizationID=1,
                         LastName="Hohland",
                         Email="abc@gmail.kz",
                         MiddleName="Ivanovich"},
-                    new User { UserID=Guid.NewGuid(), Name="Alice", LastName="Wolf", Email="WolfAlice@outllok.com"}
+                    new User { UserID=2, Name="Alice", LastName="Wolf", Email="WolfAlice@outllok.com"}
                 });
             _orgs = new List<Organization>();
             _orgs.AddRange(
                 new Organization[]
                 {
-                    new Organization { OrganizationID=Guid.Parse("B35A3C95-B96E-4BD0-9A54-86F282ED9543"),
+                    new Organization { OrganizationID=1,
                         Name="Marvel", Users = new List<User> { _usr[0] } },
-                    new Organization { OrganizationID=Guid.Parse("1FECB8BF-BF38-41E7-8146-00AD585C2E18"),
+                    new Organization { OrganizationID=2,
                         Name="Universal" },
-                    new Organization { OrganizationID=Guid.Parse("962683A0-B3D5-440E-B139-2F794D78F5D6"),
+                    new Organization { OrganizationID=3,
                         Name="DC" }
                 });
 

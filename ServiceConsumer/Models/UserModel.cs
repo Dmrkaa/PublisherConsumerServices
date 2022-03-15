@@ -6,10 +6,6 @@ namespace ServiceConsumer.Models
 {
     public class User
     {
-
-        
-        public int Id { get; set; }
-
         [Required]
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
